@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<insert id="create" parameterType="userVO">
+		INSERT INTO user(uID, password, name) VALUES (#{uID}, #{password}, #{name})
+	</insert>
+
+	<select id="read" parameterType="userVO" resultType="userVO">
+		SELECT uID, name FROM user WHERE uID = #{uID} AND password = #{password};
+	</select>
+	
+	<select id="readUID" parameterType="String" resultType="Integer">
+		SELECT count(uID) FROM user WHERE uID = #{uID};
+	</select>
+
+</mapper>

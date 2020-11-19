@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cart">
+
+	<!--카트에 물건 담기 -->
+	<insert id="create" parameterType="cartVO">
+		INSERT INTO cart(uID, pdID,	cnt)
+		VALUES (#{uID}, #{pdID}, #{cnt})
+	</insert>
+
+	<!--카트목록에서 아이디와 상품번호로 조회 -->
+	<select id="read" parameterType="cartVO" resultType="Integer">
+		select
+		count(pdID)
+		from cart where uID=#{uID} and pdID=#{pdID}
+	</select>
+
+	<!-- 회원별 카트 리스트 -->
+	<select id="list" parameterType="cartVO" resultType="cartVO">
+		select * from cart
+		inner join product
+		on product.pdID = cart.pdID
+		where uID = #{uID}
+	</select>
+	
+	<!--카트에 담긴 물품 총금액 계산 -->
+	<select id="total" parameterType="cartVO" resultType="Integer">
+		select sum(cnt * price) as "total" from cart
+		inner join product
+		on product.pdID = cart.pdID
+		where uID = #{uID}
+	</select>
+
+	<!--카트에서 삭제하기 -->
+	<delete id="delete" parameterType="cartVO">
+		delete from cart
+		where cID=#{cID}
+	</delete>
+	
+	<!-- 수량변경 -->
+	<update id="update" parameterType="cartVO">
+	update cart set cnt = #{cnt}
+	where cID=#{cID}
+	</update>
+	
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases> <!-- 각자 입력! -->
+		<typeAlias type="com.mega.plt.user.UserVO" alias="userVO"></typeAlias>
+		<typeAlias type="com.mega.plt.car.CarVO" alias="carVO"></typeAlias>
+		<typeAlias type="com.mega.plt.car.CarViewVO" alias="carViewVO"></typeAlias>
+
+		<!-- shop -->
+		<typeAlias type="com.mega.plt.shop.ProductVO" alias="productVO"></typeAlias>
+		<typeAlias type="com.mega.plt.shop.BuyVO" alias="buyVO"></typeAlias>
+		<typeAlias type="com.mega.plt.shop.CartVO" alias="cartVO"></typeAlias>
+		<!-- shop -->
+
+		<!-- quizSet, quizDetail 관련 멥퍼 -->
+		<typeAlias type="com.mega.plt.quiz.QuizSetVO" alias="quizSetVO"></typeAlias>
+		<typeAlias type="com.mega.plt.quiz.QuizDetailVO" alias="quizDetailVO"></typeAlias>
+		<typeAlias type="com.mega.plt.pole.PoleVO" alias="poleVO"></typeAlias>
+		<!-- point mapper -->
+		<typeAlias type="com.mega.plt.faq.PointVO" alias="pointVO"></typeAlias>
+
+		<!-- game,quiz -->
+		<typeAlias alias="searchQuizVO" type="com.mega.plt.game.SearchQuizVO" />
+		<typeAlias alias="progressParamVO" type="com.mega.plt.game.ProgressParamVO" />
+		<typeAlias alias="gameVO" type="com.mega.plt.game.GameVO" />
+		<typeAlias alias="quizVO" type="com.mega.plt.game.QuizVO" />
+		<typeAlias alias="selectQuizParamVO" type="com.mega.plt.game.SelectQuizParamVO" />
+		<typeAlias alias="hintParamVO" type="com.mega.plt.game.HintParamVO" />
+		<typeAlias alias="solvedParamVO" type="com.mega.plt.game.SolvedParamVO" />
+		<typeAlias alias="updateScoreParamVO" type="com.mega.plt.game.SolvedParamVO" />
+		<typeAlias alias="insertPointParamVO" type="com.mega.plt.game.SolvedParamVO" />
+		<typeAlias alias="gamedetailVO" type="com.mega.plt.game.GamedetailVO" />
+		<!-- game,quiz -->
+	</typeAliases>
+
+	<mappers> <!-- 각자 입력! -->
+		<mapper resource="mapper/user-mapper.xml" />
+		<mapper resource="mapper/product-mapper.xml" />
+		<mapper resource="mapper/buy-mapper.xml" />
+		<mapper resource="mapper/cart-mapper.xml" />
+		<mapper resource="mapper/car-mapper.xml" />
+		<mapper resource="mapper/quizSet-mapper.xml" />
+		<mapper resource="mapper/quizDetail-mapper.xml" />
+		<mapper resource="mapper/pole-mapper.xml" />
+		<mapper resource="mapper/faq-mapper.xml" />
+		<!-- game,quiz -->
+		<mapper resource="mapper/quiz-mapper.xml" />
+		<mapper resource="mapper/game-mapper.xml" />
+		<!-- game,quiz -->
+
+	</mappers>
+</configuration>

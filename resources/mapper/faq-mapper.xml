@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faq">
+
+<select id="list" resultType="pointVO">
+SELECT uID, score FROM point WHERE score > 0
+</select>
+
+<select id="find" parameterType="Integer" resultType="pointVO">
+SELECT * FROM point WHERE score=#{score}
+</select>
+
+<select id="scoreList" resultType="pointVO">
+SELECT score FROM point WHERE score > 0
+</select>
+<select id="idList" parameterType="Integer" resultType="pointVO">
+SELECT uID FROM point WHERE score = #{score}
+</select>
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game">
+	<!-- 진행도 검색 -->
+	<select id="searchProgress" parameterType="progressParamVO" resultType="gamedetailVO">
+		select gamedetail.isSolved1, gamedetail.isSolved2, gamedetail.isSolved3
+		from game
+		join gamedetail 
+		using(gID) 
+		where uID = #{uID} and qID = #{qID};
+	</select>
+	
+	<!-- 기록생성 -->
+	<insert id="insertGame" parameterType="progressParamVO">
+		insert into game (uID, qID, start) values(#{uID}, #{qID}, now());
+	</insert>
+	
+	<!-- 가장 최근에 생성된 기록의 gID 검색 -->
+	<select id="selectRecentGame" parameterType="String" resultType="Integer">
+		select gID from game where uID = #{uID} order by gID desc limit 1;
+	</select>
+	
+	<!-- 게임 서브테이블 insert -->
+	<insert id="insertGameDetail" parameterType="Integer">
+		insert into gamedetail (gID) values(#{gID});
+	</insert>
+	
+	<!-- 기록검색 -->
+	<select id="getRecord" parameterType="progressParamVO" resultType="gameVO">
+		select game.gID, game.uID, game.start, game.end, game.score, gamedetail.hint1, gamedetail.hint2, gamedetail.hint3,
+	    gamedetail.isSolved1, gamedetail.isSolved2, gamedetail.isSolved3
+		from game 
+		join gamedetail
+		using (gID) 
+		where game.uID = #{uID} and game.qID = #{qID};
+	</select>
+	
+	<!-- 힌트사용기회 업데이트 -->
+	<!-- hintcol = hint2 or hint3 -->
+	<update id="updateHintChance" parameterType="hintParamVO">
+		update gamedetail set ${hintcol} = 1 where gID = #{gID};
+	</update>
+	
+	<!-- 정답일때 isSolved update -->
+	<update id="updateIsSolved" parameterType="solvedParamVO">
+		update gamedetail set ${solvedCol} = 1 where gID = #{gID};
+	</update>
+	
+	<!-- 성공시 update game score -->
+	<update id="updateScore" parameterType="updateScoreParamVO">
+		update game set score = #{score}, end = now() where gID = #{gID};
+	</update>
+	
+	<!-- 성공시 update point score -->
+	<update id="insertPoint" parameterType="insertPointParamVO">
+		insert `point` values (null,#{uID},#{score},now());
+	</update>
+	
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quizDetail">
+
+	<!-- <insert id="quizDetailInsert" parameterType="quizDetailVO">
+		INSERT INTO quizDetail(qdID, qID, pID, hint1, hint2, hint3, ordr) VALUES (NULL, NULL, NULL, #{hint1}, #{hint2}, #{hint3}, #{ordr})
+	</insert> -->
+	
+	<insert id="quizDetailInsert" parameterType="quizDetailVO">
+		INSERT INTO quizDetail(qdID, qID, pID, hint1, hint2, hint3, ordr) 
+		SELECT NULL, qID, #{pID}, #{hint1}, #{hint2}, #{hint3}, #{ordr} FROM quizSet WHERE cDate = now()
+	</insert>
+
+</mapper>

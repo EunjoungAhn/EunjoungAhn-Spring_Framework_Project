@@ -1,0 +1,11 @@
+1. project-facet 세팅 완료
+2. pom.xml 라이브러리 세팅 완료
+3. web.xml에서 root-context를 plt-context로 변경 완료
+4. config.xml 설정 완료
+5. resources/plt-context.xml 세팅 완료
+-> 노트북or집에서 mysql 사용하시는 분들 db.properties에서 포트번호 한 번 더 체크해주세요!! 일단 학원 기준으로 3366으로 해두었습니다.
+-> 제가 드린 디비 한번에 넣기 실행하셨죠!?? 실행 전에 디비 존재 하는지 확인해주세요~~
+6. package 쪼개기 완료
+7. webapp 쪼개기 완료
+
+각 파일마다 샘플로 user 넣어뒀으니까 참고하세요! 궁금하거나 잘못된 거 있으면 말씀해주세요

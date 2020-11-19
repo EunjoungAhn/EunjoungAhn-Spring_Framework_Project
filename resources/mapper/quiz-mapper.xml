@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quiz">
+
+	<!-- 플레이가능한 모든 퀴즈셋을 검색 (필요한 위치 정보는 퀴즈셋의 첫번째 문제의 전신주 위치) -->
+	<select id="selectAllQuiz" resultType="searchQuizVO">
+		select quizset.qID, quizset.title, quizset.uID, quizdetail.pID, pole.latitude , pole.longitude from quizdetail
+		inner join quizset
+		using (qID)
+		inner join pole
+		using (pID)
+		where quizdetail.ordr  = 1;
+	</select>
+	
+	<!-- 퀴즈셋에서 진행도에 따라 3개의 퀴즈중 하나를 선택 -->
+	<select id="selectQuiz" parameterType="selectQuizParamVO" resultType="quizVO">
+		select quizdetail.qID, quizdetail.hint1, quizdetail.hint2, quizdetail.hint3,
+	   		   quizdetail.ordr, pole.latitude, pole.longitude, pole.pID
+		from quizdetail 
+		join pole 
+		using (pID) where qID = #{qID} and ordr = #{ordr};
+	</select>
+
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="buy">
+
+<!--주문  -->
+<insert id="create" parameterType="buyVO">
+		INSERT INTO buy(uID, total, pnt, address, phone, cDate)
+		VALUES (#{uID}, #{total}, #{pnt}, #{address}, #{phone}, now())
+</insert>
+
+<!--주문번호 (다음 autoincrese 값 구하기)  -->
+<select id="bID" parameterType="buyVO" resultType="Integer">
+<!-- select auto_increment 
+from information_schema.TABLES
+where TABLE_NAME = 'buy'
+and TABLE_SCHEMA = database ();
+ -->
+select bID 
+from BUY 
+where uID = #{uID} order by bID desc limit 1;
+
+</select>
+
+<!--주문상세  -->
+<insert id="detail" parameterType="buyVO">
+		INSERT INTO buydetail(bID, pdID, cnt)
+		VALUES (#{bID}, #{pdID}, #{cnt})
+</insert>
+
+<!--카트에 주문번호 업데이트 업데이트  -->
+<update id="cartnum" parameterType="buyVO">
+update cart set bID = #{bID} where uID = #{uID}
+</update>
+
+<!--카트에 담아뒀다가 주문  -->
+<insert id="cart" parameterType="buyVO">
+insert into
+buydetail(pdID, cnt, bID)
+select
+pdID, cnt, bID
+from cart
+where
+uID = #{uID}
+</insert>
+
+<!--주문후 카트 비우기  -->
+<delete id="deleteCart">
+delete from cart where bID = #{bID}
+</delete>
+
+<!-- 게임포인트 조회 -->
+<select id="userpoint" parameterType="String" resultType="Integer">
+select count(score) from point where uID = #{uID}
+</select>
+
+
+<!--게임포인트 조회(합계)  -->
+<select id="point" parameterType="String" resultType="Integer">
+select sum(score) from point where uid=#{uID}
+</select>
+
+<!--쇼핑몰에서 포인트 사용 (차감)  -->
+<insert id="usePoint" parameterType="buyVO">
+insert into point (uID, score, cDate)
+values (#{uID}, #{score}, now())
+</insert>
+
+<!-- 결제 내역 -->
+<select id="list" parameterType="buyVO" resultType="buyVO">
+select * from buy where uID = #{uID} order by bID desc;
+</select>
+
+
+
+<!-- 주문번호별 상세내역 -->
+<select id="orderdetail" parameterType="buyVO" resultType="buyVO">
+select * from buydetail 
+inner join product
+on product.pdID = buydetail.pdID 
+where bID = #{bID}
+</select>
+
+</mapper>

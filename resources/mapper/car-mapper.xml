@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="car">
+
+<insert id="in" parameterType="carVO">  
+INSERT INTO car(cID, cNum, phone, inTime) VALUES (NULL, #{cNum}, #{phone}, now())
+</insert>
+
+<update id="pay" parameterType="carVO">
+UPDATE car SET outTime = #{outTime}, price = #{price}, pay = TRUE WHERE cID = #{cID}
+</update>
+
+<select id="one" parameterType="string" resultType="carVO">
+SELECT * FROM car WHERE cNum = #{cNum} AND outTime IS NULL
+</select>
+
+<select id="chart" parameterType="string" resultType="carViewVO">
+SELECT * FROM chart WHERE inTime LIKE CONCAT('2020-', #{inTime}, '%')
+</select>
+<select id="chartDay" parameterType="string" resultType="carViewVO">
+SELECT * FROM chart WHERE outTime LIKE CONCAT('2020-', #{outTime}, '%')
+</select>
+
+</mapper>
