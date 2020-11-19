@@ -1,0 +1,18 @@
+@charset "UTF-8";
+div.header, div.content, div.footer {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid black;
+}
+
+div.content {
+	height: 500px;
+	text-align: center;
+}
+div.header, div.footer {
+	background-image: url("../img/p.png");
+}
+body{
+	background-color: lightgray;
+}
+

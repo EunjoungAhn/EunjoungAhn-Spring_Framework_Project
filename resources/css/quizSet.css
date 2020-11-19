@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+body{
+	background-color: lightgray;
+}
+.header {
+	background-image: url("../img/p.png");
+	margin: 10px;
+	padding: 10px;
+	height: 150px;
+}
+.hideHeader {
+	/* border: 1px dashed red; */
+	width: 350px;
+	height: 50px;
+	margin-top: 50px;
+	margin-left: 300px;
+	margin-bottom: 20px;
+}
+.qr{
+	/* border: 1px dashed red; */
+	float: right;
+	width: 80px;
+	height: 80px;
+	background: white;
+}
+
+.img_wrap {
+	 /* 	border: 2px dashed gray; */
+	  margin-left: 50px;
+    width: 500px;
+    height: 500px;
+    max-width: 100%;
+}
+.img_wrap img {
+	  border: 2px dashed gray;
+    max-width: 80%;
+    width: 400px;
+    height: 500px;
+}
+.poleCheckBox {
+	/* border: 1px solid purple; */
+	width: 400px;
+	height: 600px;
+	float: left;
+	margin-top: 0px;
+	margin-right: 100px;
+}
+.allHintBox{
+	/* border: 2px solid gray; */
+  width: 900px;
+	height: 700px;
+}
+.hintBox {
+	/* border: 1px solid red; */
+	width: 250px;
+	height: 200px;
+	float: left;
+	margin-right: 50px;
+}
+.hintBox2 {
+	/* border: 1px solid blue; */
+	width: 250px;
+	height: 200px;
+	float: left;	
+	margin-right: 50px;
+}
+.hintBox3 {
+	/* border: 1px solid green; */
+	width: 250px;
+	height: 200px;
+	float: left;
+}
+.hideContainer {
+	/* border: 1px solid pink; */
+	width: 900px;
+	margin-left: 500px;
+	margin-right: 200px;
+}
+.insertButton{
+	/* border: 1px dashed blue; */
+	margin-top: 30px;
+	margin-left: 250px;
+	float: left;
+}
+.textAreaSize{
+	border: 2px solid #f3cc2f;
+	resize: none;
+	width: 200px;
+	height: 100px;
+}
+
+/* 추가 button css */
+	.button
+	{
+		display: inline-block;
+		padding: 1em 2em 1em 2em;
+		letter-spacing: 0.10em;
+		margin-top: 2em;
+		padding: 1.40em 3em;
+		background: #f3cc2f;
+		border-radius: 6px;
+		text-decoration: none;
+		font-weight: 700;
+		font-size: 1em;
+		color: #3f0900;
+	}
+	
+	.button-alt
+	{
+		padding: 1em 2em;
+		border-color: rgba(0,0,0,.8);
+	}

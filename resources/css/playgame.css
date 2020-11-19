@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+div.header, div.content, div.quizset {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid black;
+}
+
+div.content {
+	height: 500px;
+}
+
+div.header {
+	background-image: url("../img/p.png");
+}
+
+div.quizset{
+	font-size: 150%;
+	font-weight: bold;
+}
+
+body{
+	background-color: lightgray;
+}
+
+div.left {
+	width: 43%;
+	height: 500px;
+	float: left;
+	border: 1px solid black;
+	float: left;
+}
+
+div.right {
+	width: 55%;
+	height: 500px;
+	float: left;
+	margin-left: 20px;
+	float: left;
+}
+
+#map {
+	height: 95%;
+	margin: 5px;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+div.infobox{
+	width: 100%;
+	border: 1px solid blue;
+	text-align: center;
+	margin: 0 auto;
+}
+
+div.hint {
+	width: 43%;
+	height: 100%;
+	float: left;
+	margin-left: 1px;
+	border: 1px solid black;
+	float: left;
+	text-align: center;
+	background-color: #c0c0c0;
+}
+
+div.img {
+	width: 53%;
+	height: 100%;
+	float: left;
+	margin-left: 20px;
+	border: 1px solid black;
+	float: left;
+	text-align: center;
+	background-color: #808080;
+}
+
+div.top{
+	width: 100%;
+	height: 70%;
+}
+
+div.bottom{
+	padding-top: 30px;
+	width: 100%;
+	height: 30%;
+	text-align: center;
+}
